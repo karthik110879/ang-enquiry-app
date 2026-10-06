@@ -1,0 +1,136 @@
+/*
+  Enquiry design tokens
+  ---------------------
+  Change the schema block below. Every screen that uses these tokens,
+  including Bootstrap, follows the new colors, type, and spacing.
+
+  Keep --schema-*-rgb in sync with its hex (red, green, blue from 0–255).
+  Bootstrap still reads colors as separate channels for translucent states.
+*/
+
+:root {
+  /* ========== Schema — edit here ========== */
+  --schema-brand: #1f6b62;
+  --schema-brand-rgb: 31, 107, 98;
+  --schema-accent: #c56a1a;
+  --schema-accent-rgb: 197, 106, 26;
+  --schema-ink: #1a1916;
+  --schema-ink-rgb: 26, 25, 22;
+  --schema-paper: #f3efe8;
+  --schema-danger: #b42318;
+  --schema-danger-rgb: 180, 35, 24;
+  --schema-success: #0f7a4a;
+  --schema-success-rgb: 15, 122, 74;
+
+  --font-sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Cascadia Mono", "Segoe UI Mono", ui-monospace, monospace;
+  /* ========== End schema ========== */
+
+  /* Brand */
+  --color-brand: var(--schema-brand);
+  --color-brand-hover: color-mix(in srgb, var(--schema-brand) 84%, black);
+  --color-brand-strong: color-mix(in srgb, var(--schema-brand) 62%, black);
+  --color-brand-soft: color-mix(in srgb, var(--schema-brand) 14%, white);
+  --color-on-brand: var(--schema-paper);
+  --color-on-brand-muted: color-mix(in srgb, var(--schema-paper) 74%, var(--schema-brand));
+
+  /* Accent, status */
+  --color-accent: var(--schema-accent);
+  --color-accent-hover: color-mix(in srgb, var(--schema-accent) 86%, black);
+  --color-accent-soft: color-mix(in srgb, var(--schema-accent) 16%, white);
+  --color-danger: var(--schema-danger);
+  --color-danger-soft: color-mix(in srgb, var(--schema-danger) 12%, white);
+  --color-success: var(--schema-success);
+  --color-success-soft: color-mix(in srgb, var(--schema-success) 14%, white);
+
+  /* Surfaces and text */
+  --color-bg: var(--schema-paper);
+  --color-surface: #fffcf8;
+  --color-surface-muted: color-mix(in srgb, var(--schema-ink) 4%, var(--schema-paper));
+  --color-text: var(--schema-ink);
+  --color-text-muted: color-mix(in srgb, var(--schema-ink) 64%, var(--schema-paper));
+  --color-text-faint: color-mix(in srgb, var(--schema-ink) 42%, var(--schema-paper));
+  --color-border: color-mix(in srgb, var(--schema-ink) 12%, var(--schema-paper));
+  --color-border-strong: color-mix(in srgb, var(--schema-ink) 22%, var(--schema-paper));
+  --color-focus: var(--schema-brand);
+
+  /* Type */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.75rem;
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --tracking-wide: 0.14em;
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Shape */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, var(--schema-ink) 6%, transparent);
+  --shadow-md: 0 16px 40px color-mix(in srgb, var(--schema-ink) 8%, transparent);
+  --shadow-lg: 0 28px 70px color-mix(in srgb, var(--schema-ink) 16%, transparent);
+
+  /* Controls */
+  --control-height: 2.75rem;
+  --focus-ring: 0 0 0 3px color-mix(in srgb, var(--color-focus) 28%, transparent);
+  --duration-fast: 150ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Layout */
+  --nav-height: 4.25rem;
+  --content-width: 72rem;
+  --z-nav: 20;
+  --color-nav: var(--color-surface);
+  --color-nav-border: var(--color-border);
+
+  /* Bootstrap follows the same schema */
+  --bs-primary: var(--color-brand);
+  --bs-primary-rgb: var(--schema-brand-rgb);
+  --bs-warning: var(--color-accent);
+  --bs-warning-rgb: var(--schema-accent-rgb);
+  --bs-danger: var(--color-danger);
+  --bs-danger-rgb: var(--schema-danger-rgb);
+  --bs-success: var(--color-success);
+  --bs-success-rgb: var(--schema-success-rgb);
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text);
+  --bs-body-color-rgb: var(--schema-ink-rgb);
+  --bs-emphasis-color: var(--color-text);
+  --bs-secondary-color: var(--color-text-muted);
+  --bs-tertiary-color: var(--color-text-faint);
+  --bs-border-color: var(--color-border);
+  --bs-link-color: var(--color-brand);
+  --bs-link-hover-color: var(--color-brand-hover);
+  --bs-border-radius: var(--radius-md);
+  --bs-border-radius-sm: var(--radius-sm);
+  --bs-border-radius-lg: var(--radius-lg);
+  --bs-border-radius-pill: var(--radius-pill);
+  --bs-font-sans-serif: var(--font-sans);
+  --bs-body-font-family: var(--font-sans);
+  --bs-focus-ring-color: color-mix(in srgb, var(--color-brand) 25%, transparent);
+}

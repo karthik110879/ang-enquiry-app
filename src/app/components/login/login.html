@@ -1,0 +1,50 @@
+<app-navbar />
+<main class="login">
+  <section class="login__brand" aria-label="Enquiry">
+    <div class="login__brand-top">
+      <div class="login__mark" aria-hidden="true">Eq</div>
+      <p class="login__eyebrow">Enquiry desk</p>
+      <h1 class="login__title">Every request, in one place.</h1>
+      <p class="login__lead">
+        Capture customer enquiries, assign them, and follow each one through to a close.
+      </p>
+    </div>
+
+    <ul class="login__points">
+      <li>New enquiries land in a single queue</li>
+      <li>Status and category stay consistent</li>
+      <li>Nothing sits unanswered</li>
+    </ul>
+  </section>
+
+  <section class="login__panel">
+    <form class="login__form" [formGroup]="loginForm">
+      <header class="login__form-head">
+        <h2>Sign in</h2>
+        <p>Use your desk account to open the enquiry board.</p>
+      </header>
+
+      <label class="login__field">
+        <span>Email</span>
+        <input type="email" name="email" formControlName="email" autocomplete="username" required placeholder="you@company.com" />
+      </label>
+
+      <label class="login__field">
+        <span>Password</span>
+        <input type="password" name="password" formControlName="password" autocomplete="current-password" required placeholder="Enter your password" />
+      </label>
+
+      <div class="login__row">
+        <label class="login__check">
+          <input type="checkbox" name="remember" />
+          <span>Remember this desk</span>
+        </label>
+        <a class="login__link" href="#">Forgot password?</a>
+      </div>
+
+      <button class="login__submit" type="submit" (click)="onSubmit()" [disabled]="disableLoginButton()">Sign in</button>
+
+      <p class="login__note">Access is issued by your administrator.</p>
+    </form>
+  </section>
+</main>

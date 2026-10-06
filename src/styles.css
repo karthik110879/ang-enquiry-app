@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/token.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+ 

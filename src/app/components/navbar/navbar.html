@@ -1,0 +1,33 @@
+<header class="topbar">
+  <a class="topbar__brand" routerLink="/home">
+    <span class="topbar__mark" aria-hidden="true">Eq</span>
+    <span class="topbar__name">
+      <strong>Enquiry</strong>
+      <small>Desk</small>
+    </span>
+  </a>
+
+  <nav class="topbar__nav" aria-label="Enquiry desk">
+    @if(!isUserLoggedIn) {
+      <a class="topbar__link" routerLink="/new-enquiry" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">New enquiry</a>
+    }@else {
+      <a class="topbar__link" routerLink="/enquiry-list" routerLinkActive="is-active">Enquiries</a>
+      <a class="topbar__link" routerLink="/status" routerLinkActive="is-active">Status</a>
+      <a class="topbar__link" routerLink="/category" routerLinkActive="is-active">Category</a>
+    }
+  </nav>
+
+  <div class="topbar__actions">
+
+    @if (isUserLoggedIn) {
+      <button class="topbar__logout" type="button" (click)="logout()">Log out</button>
+    }
+
+    @if (!isUserLoggedIn && !isLoginRoute()) {
+      
+      <button class="topbar__admin" type="button" routerLink="/login" routerLinkActive="is-active">Admin sign in</button>
+    }
+    
+ 
+  </div>
+</header>

@@ -1,0 +1,93 @@
+<section class="enquiry">
+  <header class="enquiry__head">
+    <h1>New enquiry</h1>
+    <p>Record the customer, the request, and when the desk should follow up.</p>
+  </header>
+
+  <form class="enquiry__form">
+    <fieldset class="enquiry__section">
+      <legend>Customer</legend>
+      <div class="enquiry__grid">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" [formField]="enquiryForm.customerName" autocomplete="name" placeholder="Customer name"/>
+        </label>
+
+        <label class="field">
+          <span>Email</span>
+          <input type="email" [formField]="enquiryForm.customerEmail" autocomplete="email" placeholder="name@email.com"/>
+        </label>
+
+        <label class="field">
+          <span>Phone</span>
+          <input type="tel" [formField]="enquiryForm.customerPhone" autocomplete="tel" placeholder="Phone number"/>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="enquiry__section">
+      <legend>Request</legend>
+      <div class="enquiry__grid">
+        <label class="field field--wide">
+          <span>Message</span>
+          <textarea [formField]="enquiryForm.message" rows="4" placeholder="What does the customer need?"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Type</span>
+          <input type="text" [formField]="enquiryForm.enquiryType" placeholder="Phone, walk-in, desktop"/>
+        </label>
+
+        <label class="field">
+          <span>Category</span>
+          <select [formField]="enquiryForm.categoryId">
+            <option value="" selected disabled>Select a category</option>
+            @for (cat of categories$ |async; track cat.categoryId) {
+                <option [value]="cat.categoryId">{{ cat.categoryName }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Status</span>
+          <select [formField]="enquiryForm.statusId">
+            <option value="" selected disabled>Select a status</option>
+            @for (status of statuses$ |async; track status.statusId) {
+                <option [value]="status.statusId">{{ status.statusName }}</option>
+            }
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Enquiry date</span>
+          <input type="datetime-local" [formField]="enquiryForm.enquiryDate"/>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="enquiry__section">
+      <legend>Follow-up</legend>
+      <div class="enquiry__grid">
+        <label class="field">
+          <span>Follow-up date</span>
+          <input type="datetime-local" [formField]="enquiryForm.followUpDate" />
+        </label>
+
+        <label class="enquiry__check">
+          <input type="checkbox" [formField]="enquiryForm.isConverted" />
+          <span>Converted</span>
+        </label>
+
+        <label class="field field--wide">
+          <span>Feedback</span>
+          <textarea [formField]="enquiryForm.feedback" rows="3" placeholder="Notes from the first conversation"></textarea>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="enquiry__actions">
+      <button class="enquiry__clear" type="reset">Clear</button>
+      <button class="enquiry__save" type="button" (click)="onSubmit($event)">Save enquiry</button>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,51 @@
+<section class="board">
+  <header class="board__head">
+    <h1>Enquiries</h1>
+    <p>Customer requests currently on the desk.</p>
+  </header>
+
+  @if (isLoading) {
+    <p class="board__state">Loading enquiries…</p>
+  } @else {
+    <ul class="board__list">
+      @for (enquiry of allEnqurieList; track enquiry.enquiryId) {
+        <li class="card">
+          <div class="card__top">
+            <div class="card__who">
+              <h2>{{ enquiry.customerName }}</h2>
+              <a href="mailto:{{ enquiry.customerEmail }}">{{ enquiry.customerEmail }}</a>
+            </div>
+            <span class="pill">{{ enquiry.statusName }}</span>
+          </div>
+
+          <p class="card__message">{{ enquiry.message }}</p>
+
+          <dl class="card__meta">
+            <div>
+              <dt>Category</dt>
+              <dd>{{ enquiry.categoryName }}</dd>
+            </div>
+            <div>
+              <dt>Type</dt>
+              <dd class="card__type">{{ enquiry.enquiryType }}</dd>
+            </div>
+            <div>
+              <dt>Received</dt>
+              <dd>
+                <time>{{ enquiry.enquiryDate | date:'fullDate' }}</time>
+              </dd>
+            </div>
+          </dl>
+
+          <button class="card__arrow" type="button" aria-label="Open enquiry">
+            <svg viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </li>
+      } @empty {
+        <li class="board__state">No enquiries found.</li>
+      }
+    </ul>
+  }
+</section>

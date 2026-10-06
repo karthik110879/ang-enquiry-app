@@ -1,0 +1,71 @@
+<section class="master">
+  <header class="master__head">
+    <h1>Categories</h1>
+    <p>Group enquiries by what the customer is asking about.</p>
+  </header>
+
+  <!-- Dynamic: add "master__card--editing" while a category is being edited. -->
+  <div class="master__card">
+    <!-- Dynamic: text becomes "Edit category" while editing. -->
+    <h2 class="master__card-title">Add category</h2>
+
+    <form class="master__form">
+      <!-- Dynamic: add "field--invalid" when the name is touched and empty, and show .field__error. -->
+      <label class="field">
+        <span>Category name</span>
+        <input type="text" [formField]="addCategoryForm.categoryName" placeholder="e.g. Hotel stay" />
+        <!-- <span class="field__error">Category name is required</span> -->
+      </label>
+
+      <label class="master__check">
+        <input type="checkbox" [formField]="addCategoryForm.isActive" />
+        <span>Active</span>
+      </label>
+
+      <div class="master__actions">
+        <!-- Dynamic: label becomes "Cancel" while editing. -->
+        <button class="btn btn--ghost" type="reset" (click)="onClear()">Clear</button>
+        <!-- Dynamic: label becomes "Update category" while editing; disable while invalid or saving. -->
+        <button class="btn btn--primary" type="button" (click)="onSaveCategory()">Save category</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="master__list-head">
+    <h2>All categories</h2>
+    <span class="master__count">5 categories</span>
+  </div>
+
+  <ul class="master__list">
+    <!--
+      Dynamic per row:
+      - "master__row--inactive" when isActive is false
+      - "master__row--editing" on the row currently loaded into the form
+      - pill uses "pill--active" or "pill--inactive" with matching text
+    -->
+      @for (category of allCategoriesObs$ | async; track $index) {
+
+        <li class="master__row">
+          <p class="master__name">{{category.categoryName}}</p>
+          <span class="pill pill--active">{{category.isActive}}</span>
+          <div class="master__row-actions">
+            <button class="icon-btn" type="button" aria-label="Edit Hotel stay" (click)="onEditCategory(category)">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M11.5 2.5 13.5 4.5 5.5 12.5 3 13 3.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+              </svg>
+              Edit
+            </button>
+            <button class="icon-btn icon-btn--danger" type="button" aria-label="Delete Hotel stay" (click)="onDeleteCategory(category)">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 4.5h10M6.5 4.5V3h3v1.5M4.5 4.5l.5 8.5h6l.5-8.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Delete
+            </button>
+          </div>
+        </li>
+      }
+ 
+    <!-- Empty state: render this instead of the rows when there are no categories. -->
+    <!-- <li class="master__state">No categories yet. Add the first one above.</li> -->
+  </ul>
+</section>
